@@ -26,8 +26,8 @@ export function buildYamlSyntax(hostSpec, embeddedSpecs) {
         'end': String.raw`^(?=\S)|(?!\G)`,
         'patterns': [
             {
-                'begin': String.raw`^([ ]+)(?! )`,
-                'end': String.raw`^(?!\1|\s*$)`,
+                'begin': String.raw`(^|\G)([ ]+)(?! )`,
+                'end': String.raw`(^|\G)(?!\1|\s*$)`,
                 'patterns': [{ 'include': `${embedded.root_scope}` }],
                 'name': `meta.embedded.block.${embedded.vsname}.${hostSpec.vsname} ${embedded.root_scope}`,
             },
